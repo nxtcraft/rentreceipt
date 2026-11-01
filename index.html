@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R9EW10BJGW"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-R9EW10BJGW");</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="/rentreceipt/manifest.json">
+<meta name="theme-color" content="#0891b2">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Rent Receipt Generator — Free HRA Rent Receipt PDF India 2026</title>
+<meta name="description" content="Free rent receipt generator India. Create monthly rent receipts for HRA exemption claim. Enter tenant, landlord, PAN, address — download instant PDF. Bulk April–March generation.">
+<meta name="keywords" content="rent receipt generator india, rent receipt for HRA, monthly rent receipt pdf download free, HRA rent receipt format, rent receipt generator online free, landlord rent receipt india, rent receipt with pan number, HRA exemption rent proof, rent receipt maker india 2026">
+<link rel="canonical" href="https://nxtcraft.github.io/rentreceipt/">
+<meta property="og:title" content="Rent Receipt Generator — Free HRA Rent Receipt PDF India">
+<meta property="og:description" content="Generate monthly rent receipts for HRA claim instantly. Download as PDF. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nxtcraft.github.io/rentreceipt/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Rent Receipt Generator","url":"https://nxtcraft.github.io/rentreceipt/","description":"Free rent receipt generator India for HRA claim. Generate monthly rent receipts with landlord PAN and download as PDF.","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do I need rent receipts for HRA?","acceptedAnswer":{"@type":"Answer","text":"Your employer requires rent receipts to process HRA exemption. If your monthly rent exceeds ₹8,333 (annual rent > ₹1 lakh), you must also provide your landlord's PAN card number. Without valid rent receipts, HRA is added to your taxable income."}},{"@type":"Question","name":"What should a rent receipt contain?","acceptedAnswer":{"@type":"Answer","text":"A valid rent receipt should include: date of payment, tenant's name, landlord's name and PAN (if rent > ₹1L/year), full property address, amount paid in words and figures, rental period, landlord's signature (or stamp)."}},{"@type":"Question","name":"Is a revenue stamp required on rent receipts?","acceptedAnswer":{"@type":"Answer","text":"Yes. Under Section 17 of the Indian Stamp Act, a revenue stamp of ₹1 is required on receipts where cash payment exceeds ₹5,000. Most employers accept receipts without a stamp if paid via bank transfer or NEFT."}},{"@type":"Question","name":"Can I generate receipts for the whole year at once?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Bulk option to generate all 12 receipts (April to March) for a full financial year in one click. Each receipt is dated the last working day of the respective month."}}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0f9ff;color:#0c4a6e;min-height:100vh;}
+.header{background:linear-gradient(135deg,#0e7490,#0891b2);color:#fff;padding:20px 20px 0;text-align:center;}
+.header h1{font-size:22px;font-weight:800;margin-bottom:4px;}
+.header p{font-size:13px;opacity:.85;margin-bottom:16px;}
+.tabs{display:flex;gap:0;overflow-x:auto;justify-content:center;}
+.tab{padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:rgba(255,255,255,.15);color:#fff;border-radius:8px 8px 0 0;white-space:nowrap;transition:background .15s;}
+.tab.active{background:#fff;color:#0e7490;}
+.container{max-width:960px;margin:0 auto;padding:24px 16px;}
+.panel{display:none;}.panel.active{display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start;}
+@media(max-width:680px){.panel.active{grid-template-columns:1fr;}}
+.form-card{background:#fff;border-radius:12px;padding:22px;box-shadow:0 2px 12px rgba(14,116,144,.1);}
+.form-card h2{font-size:15px;font-weight:800;color:#0c4a6e;margin-bottom:16px;}
+.field{margin-bottom:12px;}
+label{display:block;font-size:12px;font-weight:700;color:#0e7490;margin-bottom:4px;text-transform:uppercase;letter-spacing:.03em;}
+input,select,textarea{width:100%;padding:10px 12px;border:2px solid #bae6fd;border-radius:8px;font-size:14px;color:#0c4a6e;background:#fff;outline:none;transition:border .15s;}
+input:focus,select:focus,textarea:focus{border-color:#0891b2;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.btn-primary{display:block;width:100%;padding:13px;background:linear-gradient(135deg,#0e7490,#0891b2);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:800;cursor:pointer;margin-top:16px;transition:opacity .15s;}
+.btn-primary:hover{opacity:.9;}
+.btn-secondary{display:block;width:100%;padding:11px;background:#fff;color:#0e7490;border:2px solid #bae6fd;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;}
+.btn-secondary:hover{background:#e0f2fe;}
+/* RECEIPT PREVIEW */
+.preview-card{background:#fff;border-radius:12px;padding:22px;box-shadow:0 2px 12px rgba(14,116,144,.1);}
+.preview-label{font-size:12px;font-weight:700;color:#0e7490;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;}
+#receipt-preview{border:1px solid #e0f2fe;border-radius:8px;overflow:hidden;}
+/* RECEIPT STYLES */
+.receipt{background:#fff;padding:28px 32px;font-family:'Times New Roman',serif;font-size:14px;color:#111;max-width:600px;border:2px solid #0e7490;}
+.receipt-header{text-align:center;margin-bottom:20px;border-bottom:2px solid #0e7490;padding-bottom:12px;}
+.receipt-title{font-size:18px;font-weight:bold;text-transform:uppercase;letter-spacing:2px;color:#0e7490;}
+.receipt-subtitle{font-size:12px;color:#555;margin-top:4px;}
+.receipt-body{margin:16px 0;}
+.receipt-row{display:flex;margin-bottom:10px;line-height:1.6;}
+.receipt-row .rk{width:140px;flex-shrink:0;font-weight:bold;color:#333;}
+.receipt-row .rv{flex:1;border-bottom:1px dotted #aaa;padding-bottom:2px;}
+.receipt-amount{background:#e0f2fe;border:1px solid #0891b2;border-radius:6px;padding:12px 16px;margin:16px 0;text-align:center;}
+.receipt-amount .amt-num{font-size:20px;font-weight:bold;color:#0e7490;}
+.receipt-amount .amt-words{font-size:12px;color:#555;margin-top:4px;}
+.receipt-footer{margin-top:20px;display:flex;justify-content:space-between;align-items:flex-end;}
+.stamp-area{border:1px dashed #aaa;padding:10px 16px;font-size:11px;color:#888;text-align:center;border-radius:6px;min-width:120px;}
+.sign-area{text-align:right;}
+.sign-line{border-bottom:1px solid #333;width:140px;margin-bottom:4px;height:30px;}
+.receipt-note{font-size:10px;color:#888;text-align:center;margin-top:14px;border-top:1px solid #e0e0e0;padding-top:8px;}
+/* SEO */
+.seo{background:#fff;border-radius:12px;padding:24px;margin-top:20px;box-shadow:0 2px 12px rgba(14,116,144,.1);}
+.seo h2{font-size:17px;font-weight:800;color:#0c4a6e;margin-bottom:10px;}
+.seo h3{font-size:14px;font-weight:700;color:#0e7490;margin:14px 0 6px;}
+.seo p,.seo li{font-size:14px;color:#374151;line-height:1.7;margin-bottom:6px;}
+.seo ul{padding-left:20px;}
+details{margin-bottom:6px;border:1px solid #bae6fd;border-radius:8px;overflow:hidden;}
+details summary{padding:10px 14px;font-size:13px;font-weight:600;cursor:pointer;color:#0c4a6e;background:#f0f9ff;}
+details[open] summary{background:#e0f2fe;}
+details p{padding:10px 14px;font-size:13px;color:#374151;line-height:1.6;}
+footer{background:#0c4a6e;color:#7dd3fc;text-align:center;padding:16px;font-size:13px;margin-top:24px;}
+footer a{color:#38bdf8;text-decoration:none;}
+@media print{header,.tab,.btn-primary,.btn-secondary,.preview-label,.seo,footer,body>*:not(#print-target){display:none!important;}.receipt{border:2px solid #0e7490!important;box-shadow:none;}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏠 Rent Receipt Generator</h1>
+  <p>Generate monthly rent receipts for HRA exemption — free, instant PDF</p>
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('single',this)">📄 Single Receipt</button>
+    <button class="tab" onclick="showTab('bulk',this)">📋 Full Year (Bulk)</button>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- SINGLE TAB -->
+<div id="tab-single" class="panel active">
+  <div class="form-card">
+    <h2>Receipt Details</h2>
+
+    <div class="field">
+      <label>Tenant Name *</label>
+      <input type="text" id="tenant" placeholder="e.g. Rahul Sharma" oninput="previewReceipt()">
+    </div>
+    <div class="field">
+      <label>Tenant Address</label>
+      <textarea id="tenant-addr" rows="2" placeholder="e.g. Flat 302, Sunrise Apts, Andheri West, Mumbai 400053" oninput="previewReceipt()"></textarea>
+    </div>
+    <div class="field">
+      <label>Landlord Name *</label>
+      <input type="text" id="landlord" placeholder="e.g. Suresh Mehta" oninput="previewReceipt()">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Landlord PAN <span style="font-size:10px;color:#888;font-weight:400;">(if rent>₹1L/yr)</span></label>
+        <input type="text" id="pan" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase();previewReceipt()">
+      </div>
+      <div class="field">
+        <label>Monthly Rent (₹) *</label>
+        <input type="number" id="rent" placeholder="15000" oninput="previewReceipt()">
+      </div>
+    </div>
+    <div class="field">
+      <label>Property Address *</label>
+      <textarea id="prop-addr" rows="2" placeholder="e.g. Flat 302, Sunrise Apts, Andheri West, Mumbai 400053" oninput="previewReceipt()"></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Month</label>
+        <select id="month" onchange="previewReceipt()">
+          <option value="January">January</option><option value="February">February</option>
+          <option value="March">March</option><option value="April">April</option>
+          <option value="May">May</option><option value="June">June</option>
+          <option value="July">July</option><option value="August">August</option>
+          <option value="September">September</option><option value="October">October</option>
+          <option value="November">November</option><option value="December">December</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Year</label>
+        <select id="year" onchange="previewReceipt()">
+          <option>2024</option><option>2025</option><option selected>2026</option><option>2027</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>Payment Mode</label>
+      <select id="mode" onchange="previewReceipt()">
+        <option>NEFT / Bank Transfer</option>
+        <option>UPI (PhonePe/GPay/BHIM)</option>
+        <option>Cheque</option>
+        <option>Cash</option>
+      </select>
+    </div>
+    <button class="btn-primary" onclick="window.print()">⬇️ Download as PDF</button>
+    <button class="btn-secondary" onclick="previewReceipt()">🔄 Refresh Preview</button>
+    <p style="font-size:11px;color:#888;text-align:center;margin-top:8px;">In print dialog → Save as PDF → A4 size</p>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-label">
+      <span>Live Preview</span>
+      <button onclick="window.print()" style="padding:6px 14px;background:#0891b2;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">⬇️ Download PDF</button>
+    </div>
+    <div id="receipt-preview">
+      <div class="receipt" id="rp"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BULK TAB -->
+<div id="tab-bulk" class="panel">
+  <div class="form-card">
+    <h2>Bulk — Full Financial Year</h2>
+    <p style="font-size:12px;color:#64748b;margin-bottom:14px;">Generates 12 receipts (April–March) in one PDF. Perfect for HR submission.</p>
+
+    <div class="field">
+      <label>Tenant Name *</label>
+      <input type="text" id="b-tenant" placeholder="e.g. Rahul Sharma" oninput="previewBulk()">
+    </div>
+    <div class="field">
+      <label>Landlord Name *</label>
+      <input type="text" id="b-landlord" placeholder="e.g. Suresh Mehta" oninput="previewBulk()">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Landlord PAN</label>
+        <input type="text" id="b-pan" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase();previewBulk()">
+      </div>
+      <div class="field">
+        <label>Monthly Rent (₹) *</label>
+        <input type="number" id="b-rent" placeholder="15000" oninput="previewBulk()">
+      </div>
+    </div>
+    <div class="field">
+      <label>Property Address *</label>
+      <textarea id="b-prop-addr" rows="2" placeholder="Full property address" oninput="previewBulk()"></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Financial Year</label>
+        <select id="b-fy" onchange="previewBulk()">
+          <option value="2024">FY 2024-25</option>
+          <option value="2025" selected>FY 2025-26</option>
+          <option value="2026">FY 2026-27</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Payment Mode</label>
+        <select id="b-mode" onchange="previewBulk()">
+          <option>NEFT / Bank Transfer</option>
+          <option>UPI</option><option>Cheque</option><option>Cash</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="window.print()">⬇️ Download All 12 Receipts PDF</button>
+    <p style="font-size:11px;color:#888;text-align:center;margin-top:8px;">Save as PDF → A4 → all 12 on separate pages</p>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-label"><span>Full Year Preview (scroll)</span></div>
+    <div id="bulk-preview" style="max-height:500px;overflow-y:auto;display:flex;flex-direction:column;gap:16px;"></div>
+  </div>
+</div>
+
+<div class="seo">
+  <h2>How to Use Rent Receipts for HRA Exemption</h2>
+  <h3>When do you need rent receipts?</h3>
+  <p>Salaried employees claiming House Rent Allowance (HRA) must submit rent receipts to their HR/payroll team — typically in January or February for the current financial year. Without valid receipts, HRA is included in taxable income.</p>
+  <h3>Mandatory fields in a rent receipt</h3>
+  <ul>
+    <li><strong>Landlord's name and PAN</strong> — PAN mandatory if annual rent exceeds ₹1,00,000</li>
+    <li><strong>Tenant's full name and address</strong></li>
+    <li><strong>Monthly rent amount</strong> — in figures and words</li>
+    <li><strong>Payment date and mode</strong></li>
+    <li><strong>Landlord's signature</strong></li>
+  </ul>
+  <h3>Revenue stamp rule</h3>
+  <p>A ₹1 revenue stamp is required if cash payment exceeds ₹5,000. For payments by NEFT, UPI, or cheque — no stamp is needed.</p>
+  <details><summary>Is a landlord's PAN always required?</summary><p>No. Landlord PAN is mandatory only when annual rent exceeds ₹1,00,000 (₹8,334/month or more). Below this threshold, receipts without PAN are valid for HRA claims.</p></details>
+  <details><summary>What if my landlord refuses to give PAN?</summary><p>If your landlord refuses, you can still claim HRA but you may have to pay tax on the excess amount. Your employer may accept a declaration from the landlord stating they don't have a PAN.</p></details>
+  <details><summary>Can I claim HRA for parents' house?</summary><p>Yes, provided you are actually paying rent, there is a formal rental agreement, and the rent is credited to your parents' bank account. Your parents must declare this rental income in their ITR.</p></details>
+  <div style="margin-top:16px;font-size:13px;text-align:center;">
+    Also useful: <a href="https://nxtcraft.github.io/taxcalc/" style="color:#0891b2;">Income Tax Calculator</a> ·
+    <a href="https://nxtcraft.github.io/salaryslip/" style="color:#0891b2;">Salary Slip Generator</a> ·
+    <a href="https://nxtcraft.github.io/gstcalc/" style="color:#0891b2;">GST Calculator</a>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  &copy; 2026 Rent Receipt Generator · Free HRA Rent Receipt India ·
+  <a href="https://nxtcraft.github.io/">All NxtCraft Tools</a> ·
+  <a href="https://nxtcraft.github.io/taxcalc/">TaxCalc</a> ·
+  <a href="https://nxtcraft.github.io/salaryslip/">Salary Slip</a>
+</footer>
+
+<script>
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+function numToWords(n) {
+  if (!n || isNaN(n)) return '';
+  n = Math.round(n);
+  const ones = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+  const tens = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+  function chunk(num) {
+    if (num === 0) return '';
+    if (num < 20) return ones[num];
+    return tens[Math.floor(num/10)] + (num%10 ? ' ' + ones[num%10] : '');
+  }
+  if (n === 0) return 'Zero';
+  let words = '';
+  if (n >= 10000000) { words += chunk(Math.floor(n/10000000)) + ' Crore '; n %= 10000000; }
+  if (n >= 100000) { words += chunk(Math.floor(n/100000)) + ' Lakh '; n %= 100000; }
+  if (n >= 1000) { words += chunk(Math.floor(n/1000)) + ' Thousand '; n %= 1000; }
+  if (n >= 100) { words += chunk(Math.floor(n/100)) + ' Hundred '; n %= 100; }
+  if (n > 0) words += chunk(n);
+  return words.trim() + ' Rupees Only';
+}
+
+function formatINR(n) {
+  return '₹' + Number(n).toLocaleString('en-IN');
+}
+
+function buildReceipt(tenant, tenantAddr, landlord, pan, rent, propAddr, month, year, mode, idx) {
+  const rentNum = parseFloat(rent) || 0;
+  const words = numToWords(rentNum);
+  const annualRent = rentNum * 12;
+  const panLine = pan ? pan : (annualRent >= 100000 ? '<span style="color:#dc2626;">PAN REQUIRED (annual rent > ₹1L)</span>' : 'Not applicable');
+  const needStamp = mode === 'Cash' && rentNum > 5000;
+  const receiptNo = `RR/${year}-${String(parseInt(year)+1).slice(2)}/${String(idx+1).padStart(2,'0')}`;
+
+  return `<div class="receipt" style="page-break-after:always;">
+  <div class="receipt-header">
+    <div class="receipt-title">Rent Receipt</div>
+    <div class="receipt-subtitle">House Rent Receipt — For HRA Exemption Claim</div>
+  </div>
+  <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:14px;">
+    <span><b>Receipt No:</b> ${receiptNo}</span>
+    <span><b>Date:</b> ${lastDay(month, year)}</span>
+  </div>
+  <div class="receipt-body">
+    <div class="receipt-row"><span class="rk">Received From</span><span class="rv">${tenant || '_______________'}</span></div>
+    ${tenantAddr ? `<div class="receipt-row"><span class="rk">Tenant Address</span><span class="rv">${tenantAddr}</span></div>` : ''}
+    <div class="receipt-row"><span class="rk">Property Address</span><span class="rv">${propAddr || '_______________'}</span></div>
+    <div class="receipt-row"><span class="rk">Rental Period</span><span class="rv">${month} ${year}</span></div>
+    <div class="receipt-row"><span class="rk">Payment Mode</span><span class="rv">${mode}</span></div>
+  </div>
+  <div class="receipt-amount">
+    <div class="amt-num">${formatINR(rentNum)}</div>
+    <div class="amt-words">${words}</div>
+  </div>
+  <div class="receipt-body">
+    <div class="receipt-row"><span class="rk">Landlord Name</span><span class="rv">${landlord || '_______________'}</span></div>
+    <div class="receipt-row"><span class="rk">Landlord PAN</span><span class="rv">${panLine}</span></div>
+  </div>
+  <div class="receipt-footer">
+    <div class="stamp-area">${needStamp ? 'Affix ₹1<br>Revenue Stamp' : 'Paid via<br>' + mode + '<br>(No stamp needed)'}</div>
+    <div class="sign-area">
+      <div class="sign-line"></div>
+      <div style="font-size:12px;"><b>${landlord || 'Landlord'}</b><br><span style="font-size:10px;">Signature</span></div>
+    </div>
+  </div>
+  <div class="receipt-note">Generated by NxtCraft Rent Receipt Generator · nxtcraft.github.io/rentreceipt · This is a computer-generated receipt.</div>
+</div>`;
+}
+
+function lastDay(month, year) {
+  const m = MONTHS.indexOf(month);
+  const d = new Date(parseInt(year), m + 1, 0).getDate();
+  return `${d} ${month} ${year}`;
+}
+
+function previewReceipt() {
+  const tenant = document.getElementById('tenant').value.trim();
+  const tenantAddr = document.getElementById('tenant-addr').value.trim();
+  const landlord = document.getElementById('landlord').value.trim();
+  const pan = document.getElementById('pan').value.trim();
+  const rent = document.getElementById('rent').value;
+  const propAddr = document.getElementById('prop-addr').value.trim();
+  const month = document.getElementById('month').value;
+  const year = document.getElementById('year').value;
+  const mode = document.getElementById('mode').value;
+  document.getElementById('rp').innerHTML = buildReceipt(tenant, tenantAddr, landlord, pan, rent, propAddr, month, year, mode, 0);
+}
+
+function previewBulk() {
+  const tenant = document.getElementById('b-tenant').value.trim();
+  const landlord = document.getElementById('b-landlord').value.trim();
+  const pan = document.getElementById('b-pan').value.trim();
+  const rent = document.getElementById('b-rent').value;
+  const propAddr = document.getElementById('b-prop-addr').value.trim();
+  const fy = parseInt(document.getElementById('b-fy').value);
+  const mode = document.getElementById('b-mode').value;
+  const fyMonths = ['April','May','June','July','August','September','October','November','December','January','February','March'];
+  const fyYears = [fy,fy,fy,fy,fy,fy,fy,fy,fy,fy+1,fy+1,fy+1];
+  const container = document.getElementById('bulk-preview');
+  container.innerHTML = fyMonths.map((m, i) =>
+    `<div>${buildReceipt(tenant, '', landlord, pan, rent, propAddr, m, fyYears[i], mode, i)}</div>`
+  ).join('');
+}
+
+function showTab(name, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  el.classList.add('active');
+}
+
+// Set current month
+const now = new Date();
+document.getElementById('month').value = MONTHS[now.getMonth()];
+document.getElementById('year').value = now.getFullYear().toString();
+previewReceipt();
+</script>
+<script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/rentreceipt/sw.js");</script>
+</body>
+</html>
