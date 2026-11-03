@@ -211,8 +211,9 @@ footer a{color:#38bdf8;text-decoration:none;}
         </select>
       </div>
     </div>
-    <button class="btn-primary" onclick="window.print()">⬇️ Download All 12 Receipts PDF</button>
-    <p style="font-size:11px;color:#888;text-align:center;margin-top:8px;">Save as PDF → A4 → all 12 on separate pages</p>
+    <button class="btn-primary" id="bulkPdfBtn" onclick="downloadBulkPDF()">⬇️ Download FY Bundle (Single PDF)</button>
+    <button class="btn-secondary" onclick="window.print()" style="margin-top:6px;width:100%">🖨️ Print / Browser PDF</button>
+    <p style="font-size:11px;color:#888;text-align:center;margin-top:8px;">Direct PDF = all 12 receipts in one file, no print dialog.</p>
   </div>
 
   <div class="preview-card">
@@ -371,6 +372,69 @@ const now = new Date();
 document.getElementById('month').value = MONTHS[now.getMonth()];
 document.getElementById('year').value = now.getFullYear().toString();
 previewReceipt();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script>
+async function downloadBulkPDF() {
+  const btn = document.getElementById('bulkPdfBtn');
+  const tenant = document.getElementById('b-tenant').value.trim();
+  const landlord = document.getElementById('b-landlord').value.trim();
+  const pan = document.getElementById('b-pan').value.trim();
+  const rent = document.getElementById('b-rent').value;
+  const propAddr = document.getElementById('b-prop-addr').value.trim();
+  const fy = parseInt(document.getElementById('b-fy').value);
+  const mode = document.getElementById('b-mode').value;
+
+  if (!tenant || !landlord || !rent || !propAddr) {
+    alert('Please fill in Tenant Name, Landlord Name, Rent Amount and Property Address before downloading.');
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = '⏳ Generating PDF…';
+
+  const fyMonths = ['April','May','June','July','August','September','October','November','December','January','February','March'];
+  const fyYears = [fy,fy,fy,fy,fy,fy,fy,fy,fy,fy+1,fy+1,fy+1];
+
+  const { PDFDocument } = PDFLib;
+  const doc = await PDFDocument.create();
+
+  // Temp hidden container
+  const container = document.createElement('div');
+  container.style.cssText = 'position:fixed;left:-9999px;top:0;width:794px;background:#fff;';
+  document.body.appendChild(container);
+
+  for (let i = 0; i < 12; i++) {
+    const html = buildReceipt(tenant, '', landlord, pan, rent, propAddr, fyMonths[i], fyYears[i], mode, i);
+    container.innerHTML = html;
+    await new Promise(r => setTimeout(r, 80)); // allow render
+
+    const canvas = await html2canvas(container.firstElementChild, {
+      scale: 2, useCORS: true, backgroundColor: '#ffffff', logging: false
+    });
+
+    const imgData = canvas.toDataURL('image/jpeg', 0.92);
+    const imgBytes = await fetch(imgData).then(r => r.arrayBuffer());
+    const img = await doc.embedJpg(imgBytes);
+
+    // A4 dimensions in points (595 x 842)
+    const page = doc.addPage([595, 842]);
+    const scale = Math.min(595 / img.width, 842 / img.height);
+    const w = img.width * scale, h = img.height * scale;
+    page.drawImage(img, { x: (595 - w) / 2, y: (842 - h) / 2, width: w, height: h });
+  }
+
+  document.body.removeChild(container);
+
+  const bytes = await doc.save();
+  const blob = new Blob([bytes], { type: 'application/pdf' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `Rent-Receipts-FY${fy}-${fy+1}.pdf`;
+  a.click();
+
+  btn.disabled = false; btn.textContent = '⬇️ Download FY Bundle (Single PDF)';
+}
 </script>
 <script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/rentreceipt/sw.js");</script>
 </body>
