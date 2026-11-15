@@ -82,6 +82,7 @@ footer a{color:#38bdf8;text-decoration:none;}
 </style>
 
 <link rel="stylesheet" id="nc-dark" href="/assets/nc-dark.css">
+<script>function ncEsc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c])}</script>
 </head>
 <body>
 
@@ -289,6 +290,7 @@ function formatINR(n) {
 }
 
 function buildReceipt(tenant, tenantAddr, landlord, pan, rent, propAddr, month, year, mode, idx) {
+  [tenant, tenantAddr, landlord, pan, propAddr] = [tenant, tenantAddr, landlord, pan, propAddr].map(ncEsc);
   const rentNum = parseFloat(rent) || 0;
   const words = numToWords(rentNum);
   const annualRent = rentNum * 12;
